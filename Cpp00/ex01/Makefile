@@ -1,12 +1,12 @@
-NAME			:=	megaphone
+NAME			:=	phonebook
 
 HEADERS_DIR		:=	.
-HEADERS_FILES	:=
+HEADERS_FILES	:=	PhoneBook.hpp Contact.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:=	.
-SRC_FILES		:=	megaphone.cpp
+SRC_FILES		:=	main.cpp PhoneBook.cpp Contact.cpp
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
