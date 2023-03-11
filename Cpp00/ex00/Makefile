@@ -27,7 +27,6 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp  Makefile
 
 clean:
 	@rm -rf $(BUILD_DIR)
-	@rm -rf $(BUILD_DIR_B)
 
 fclean: clean
 	@rm -rf $(NAME)
