@@ -19,7 +19,7 @@ CC_FLAGS		:=	-Wextra -Werror -Wall -std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) -g3 $(CC_FLAGS) $(OBJS) -o $@
+	$(CC) $(CC_FLAGS) $(OBJS) -o $@
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp  Makefile
 	@mkdir -p $(@D)
