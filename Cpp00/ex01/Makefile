@@ -1,12 +1,14 @@
 NAME			:=	phonebook
 
-HEADERS_DIR		:=	.
+HEADERS_DIR		:= .
 HEADERS_FILES	:=	PhoneBook.hpp Contact.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
-SRC_DIR			:=	.
-SRC_FILES		:=	main.cpp PhoneBook.cpp Contact.cpp
+SRC_DIR			:= .
+SRC_FILES		:=	main.cpp \
+					PhoneBook.cpp \
+					Contact.cpp
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
@@ -14,16 +16,20 @@ BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
 
 CC				:=	c++
-CC_FLAGS		:=	-Wextra -Werror -Wall -std=c++98
+CC_FLAGS		:=	-Wextra -Werror -Wall -std=c++98 -g3
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CC_FLAGS) $(OBJS) -o $@
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp  Makefile
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEADERS) Makefile
 	@mkdir -p $(@D)
 	$(CC) $(CC_FLAGS) -I$(HEADERS_DIR) -c $< -o $@
+
+echo:
+	@echo $(SRCS)
+	@echo $(OBJS)
 
 clean:
 	@rm -rf $(BUILD_DIR)

@@ -6,19 +6,15 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:22:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 11:28:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:12:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : _currentSize(0), _lastContactIndex(0) {
-	std::cout << "--- PhoneBook Constructor called ---" << std::endl;
-}
+PhoneBook::PhoneBook() : _currentSize(0), _lastContactIndex(0) {}
 
-PhoneBook::~PhoneBook() {
-	std::cout << "--- PhoneBook Destructor called ---" << std::endl;
-}
+PhoneBook::~PhoneBook() {}
 
 void PhoneBook::AddContact(const Contact& newContact) {
 	if (this->_currentSize < PHONEBOOK_SIZE) {
@@ -28,10 +24,6 @@ void PhoneBook::AddContact(const Contact& newContact) {
 	}
 	this->_contacts[_lastContactIndex] = newContact;
 	this->_lastContactIndex = (this->_lastContactIndex + 1) % PHONEBOOK_SIZE;
-}
-
-int PhoneBook::GetPhoneBookSize() const {
-	return this->_currentSize;
 }
 
 Contact PhoneBook::GetContact(int contactIndex) const {
@@ -45,7 +37,7 @@ void PhoneBook::DisplayCommands() {
 	std::cout << "\t- " << BOLD << "EXIT" << END << ": to deliver yourself" << std::endl << std::endl;
 }
 
-void PhoneBook::PrintPhoneBook() {
+void PhoneBook::PrintPhoneBook() const {
 
 	if (this->_currentSize == 0) {
 		std::cout << RED << "PhoneBook is currently empty" << END << std::endl;
@@ -63,18 +55,13 @@ void PhoneBook::PrintPhoneBook() {
 	this->GetContactInfo();
 }
 
-void PhoneBook::GetContactInfo() {
+void PhoneBook::GetContactInfo() const {
 	std::string indexInput;
-	int entryIndex = PHONEBOOK_SIZE;
+	int entryIndex = -1;
 	Contact contact;
 
-	std::cout << BLUE << "Contact index to display: " << END;
-	std::getline(std::cin, indexInput);
-	if (std::cin.eof())
-		return ;
-	while (indexInput.length() != 1 || !std::isdigit(indexInput[0]) || entryIndex > this->_currentSize - 1)
+	while (entryIndex == -1)
 	{
-		std::cout << RED << indexInput << " is not a valid index, please give an index between 0 and " << this->_currentSize - 1 << END << std::endl;
 		std::cout << BLUE << "Contact index to display: " << END;
 		std::getline(std::cin, indexInput);
 		if (std::cin.eof())
@@ -82,10 +69,16 @@ void PhoneBook::GetContactInfo() {
 		if (indexInput.length() == 1 && std::isdigit(indexInput[0])) {
 			std::istringstream s(indexInput);
 			s >> entryIndex;
-			std::cout << "result index: " << entryIndex;
+			if (entryIndex > this->_currentSize - 1) {
+				std::cout << RED << indexInput << " is not a valid index, please give an index between 0 and "
+						  << this->_currentSize - 1 << END << std::endl;
+				entryIndex = -1;
+			}
 		}
+		else
+			std::cout << RED << indexInput << " is not a valid index, please give an index between 0 and " << this->_currentSize - 1 << END << std::endl;
+		indexInput.clear();
 	}
-	std::cout << std::endl;
 	contact = this->GetContact(entryIndex);
 	std::cout << std::setw(15) << std::left << std::setfill(' ') << BOLD << "First Name: " << END << contact.GetFirstName() << std:: endl;
 	std::cout << std::setw(15) << std::left << std::setfill(' ') << BOLD << "Last Name: " << END << contact.GetLastName() << std:: endl;

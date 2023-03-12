@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:11:22 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 11:28:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:05:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ public:
 	PhoneBook();
 	~PhoneBook();
 	void		AddContact(const Contact& newContact);
-	int			GetPhoneBookSize() const;
 	Contact		GetContact(int contactIndex) const;
-	void 		PrintPhoneBook();
-	void		GetContactInfo();
+	void 		PrintPhoneBook() const;
+	void		GetContactInfo() const;
 
 	// Static
 	static void	DisplayCommands();
@@ -41,8 +40,6 @@ private:
 	Contact _contacts[PHONEBOOK_SIZE];
 	int 	_currentSize;
 	int 	_lastContactIndex;
-
-	void PrintContactInfo(const Contact& contact);
 };
 
 #endif

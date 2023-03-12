@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:21:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 11:25:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:11:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,10 @@ Contact::Contact() {}
 Contact::Contact(std::string contactInformation[5])
 	:_firstName(contactInformation[0]), _lastName(contactInformation[1]),
 	_nickname(contactInformation[2]), _phoneNumber(contactInformation[3]),
-	_darkestSecret(contactInformation[5])
-{
-	std::cout << "--- Contact Constructor called ---" << std::endl;
-}
+	_darkestSecret(contactInformation[4])
+{}
 
-Contact::~Contact() {
-	std::cout << "--- Contact Destructor called ---" << std::endl;
-}
+Contact::~Contact() {}
 
 std::string Contact::GetFirstName() const {
 	return this->_firstName;
