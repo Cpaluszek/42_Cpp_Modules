@@ -17,9 +17,11 @@
 
 class Zombie {
 public:
+	Zombie();
 	Zombie(const std::string &name);
 	~Zombie();
 	void announce() const;
+	void setName(const std::string &name);
 
 private:
 	std::string _name;

@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 16:25:13 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 16:25:13 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/03/12 16:35:50 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/03/12 16:46:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
-
 /* ************************************************************************** */
 
-#pragma once
-#include <iostream>
-#include <string>
+#include "Zombie.hpp"
 
-class Zombie {
-public:
-	Zombie(const std::string &name);
-	~Zombie();
-	void announce() const;
+Zombie *zombieHorde(int N, std::string name);
 
-private:
-	std::string _name;
-};
+int main() {
+	Zombie zombie("Basic zombie");
+	zombie.announce();
+
+	Zombie* zombies = zombieHorde(5, "Horde");
+	if (zombies == NULL) {
+		std::cerr << "Failed to allocate zombie" << std::endl;
+		return 1;
+	}
+	for (int i = 0; i < 5; i++)
+		zombies[i].announce();
+	delete[] zombies;
+	return 0;
+}

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 16:25:13 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 16:25:13 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/03/12 16:44:34 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/03/12 16:52:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
-
 /* ************************************************************************** */
 
-#pragma once
-#include <iostream>
-#include <string>
+#include "Zombie.hpp"
 
-class Zombie {
-public:
-	Zombie(const std::string &name);
-	~Zombie();
-	void announce() const;
-
-private:
-	std::string _name;
-};
+Zombie *zombieHorde(int N, std::string name) {
+	if (N < 1) {
+		std::cerr << "Zombie amount must be greater than 1" << std::endl;
+		return NULL;
+	}
+	Zombie *zombie = new Zombie[N];
+	for (int i = 0 ; i < N; i++)
+		zombie[i].setName(name);
+	return zombie;
+}

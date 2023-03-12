@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 16:35:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 16:41:29 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/03/12 16:26:49 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/03/12 16:50:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+Zombie::Zombie() {}
 
-int main() {
-	Zombie zombie("Basic zombie");
-	zombie.announce();
-	Zombie *zombieHeap = newZombie("Heap zombie");
-	if (!zombieHeap) {
-		std::cerr << "Failed to allocate zombie" << std::endl;
-		return 1;
-	}
-	zombieHeap->announce();
-	delete zombieHeap;
-	randomChump("Stack zombie");
-	return 0;
+Zombie::Zombie(const std::string &name) : _name(name) {
+	std::cout << "Zombie " << _name << " created" << std::endl;
+}
+
+Zombie::~Zombie() {
+	std::cout << "Zombie " << _name << " destroyed" << std::endl;
+};
+
+void Zombie::announce() const {
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void Zombie::setName(const std::string &name) {
+	this->_name = name;
 }
