@@ -6,13 +6,15 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:11:22 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/11 19:38:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/12 11:28:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# include <iomanip>
+# include <sstream>
 # include "Contact.hpp"
 # define PHONEBOOK_SIZE	8
 
@@ -26,14 +28,21 @@ class PhoneBook {
 public:
 	PhoneBook();
 	~PhoneBook();
-	void	AddContact(const Contact& newContact);
-	int		GetPhoneBookSize() const;
-	Contact	GetContact(int contactIndex) const;
+	void		AddContact(const Contact& newContact);
+	int			GetPhoneBookSize() const;
+	Contact		GetContact(int contactIndex) const;
+	void 		PrintPhoneBook();
+	void		GetContactInfo();
+
+	// Static
+	static void	DisplayCommands();
 
 private:
 	Contact _contacts[PHONEBOOK_SIZE];
 	int 	_currentSize;
 	int 	_lastContactIndex;
+
+	void PrintContactInfo(const Contact& contact);
 };
 
 #endif

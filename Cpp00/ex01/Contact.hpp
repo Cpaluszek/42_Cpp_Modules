@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:11:55 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/11 17:33:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/12 11:26:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
+# include <iomanip>
 # include <string>
 # include <iostream>
 
@@ -29,6 +30,10 @@ public:
 	std::string GetNickname() const;
 	std::string GetPhoneNumber() const;
 	std::string GetDarkestSecret() const;
+	void PrintContactInfo() const;
+
+	// Static
+	static void PrintLine(std::string content);
 
 private:
 	std::string _firstName;
@@ -36,6 +41,7 @@ private:
 	std::string _nickname;
 	std::string _phoneNumber;
 	std::string _darkestSecret;
+
 };
 
 #endif
