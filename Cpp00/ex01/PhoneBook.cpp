@@ -6,15 +6,19 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:22:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 12:12:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:58:59 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : _currentSize(0), _lastContactIndex(0) {}
+PhoneBook::PhoneBook() : _currentSize(0), _lastContactIndex(0) {
+	std::cout << "--- PhoneBook constructor ---" << std::endl;
+}
 
-PhoneBook::~PhoneBook() {}
+PhoneBook::~PhoneBook() {
+	std::cout << "--- PhoneBook destructor ---" << std::endl;
+}
 
 void PhoneBook::AddContact(const Contact& newContact) {
 	if (this->_currentSize < PHONEBOOK_SIZE) {
@@ -49,7 +53,7 @@ void PhoneBook::PrintPhoneBook() const {
 	Contact::PrintLine("NICKNAME");
 	std::cout << std::endl;
 	for (int i = 0 ; i < this->_currentSize; i++) {
-		std::cout << std::setw(10) << std::left << std::setfill(' ') << i << "|";
+		std::cout << std::setw(10) << std::right << std::setfill(' ') << i << "|";
 		this->GetContact(i).PrintContactInfo();
 	}
 	this->GetContactInfo();
@@ -58,7 +62,6 @@ void PhoneBook::PrintPhoneBook() const {
 void PhoneBook::GetContactInfo() const {
 	std::string indexInput;
 	int entryIndex = -1;
-	Contact contact;
 
 	while (entryIndex == -1)
 	{
@@ -79,11 +82,11 @@ void PhoneBook::GetContactInfo() const {
 			std::cout << RED << indexInput << " is not a valid index, please give an index between 0 and " << this->_currentSize - 1 << END << std::endl;
 		indexInput.clear();
 	}
-	contact = this->GetContact(entryIndex);
-	std::cout << std::setw(15) << std::left << std::setfill(' ') << BOLD << "First Name: " << END << contact.GetFirstName() << std:: endl;
-	std::cout << std::setw(15) << std::left << std::setfill(' ') << BOLD << "Last Name: " << END << contact.GetLastName() << std:: endl;
-	std::cout << std::setw(15) << std::left << std::setfill(' ') << BOLD << "Nick Name: " << END << contact.GetNickname() << std:: endl;
-	std::cout << std::setw(15) << std::left << std::setfill(' ') << BOLD << "Phone Number: " << END << contact.GetPhoneNumber() << std:: endl;
-	std::cout << std::setw(15) << std::left << std::setfill(' ') << BOLD << "Darkest Secret: " << END << contact.GetDarkestSecret() << std:: endl;
+	Contact contact = this->GetContact(entryIndex);
+	std::cout << std::setw(15) << std::right << std::setfill(' ') << BOLD << "First Name: " << END << contact.GetFirstName() << std:: endl;
+	std::cout << std::setw(15) << std::right << std::setfill(' ') << BOLD << "Last Name: " << END << contact.GetLastName() << std:: endl;
+	std::cout << std::setw(15) << std::right << std::setfill(' ') << BOLD << "Nick Name: " << END << contact.GetNickname() << std:: endl;
+	std::cout << std::setw(15) << std::right << std::setfill(' ') << BOLD << "Phone Number: " << END << contact.GetPhoneNumber() << std:: endl;
+	std::cout << std::setw(15) << std::right << std::setfill(' ') << BOLD << "Darkest Secret: " << END << contact.GetDarkestSecret() << std:: endl;
 }
 

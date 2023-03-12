@@ -6,21 +6,27 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:21:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 12:11:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/12 13:00:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact() {}
+Contact::Contact() {
+	std::cout << "--- Contact default constructor ---" << std::endl;
+}
 
 Contact::Contact(std::string contactInformation[5])
 	:_firstName(contactInformation[0]), _lastName(contactInformation[1]),
 	_nickname(contactInformation[2]), _phoneNumber(contactInformation[3]),
-	_darkestSecret(contactInformation[4])
-{}
+	_darkestSecret(contactInformation[4]) {
+	std::cout << "--- Contact constructor ---" << std::endl;
+}
 
-Contact::~Contact() {}
+
+Contact::~Contact() {
+	std::cout << "--- Contact destructor ---" << std::endl;
+}
 
 std::string Contact::GetFirstName() const {
 	return this->_firstName;
