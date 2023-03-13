@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 10:30:57 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/11 11:40:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/13 11:32:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
     for (int i = 1; i < argc; i++) {
         userInput = argv[i];
         for (size_t j = 0; j < userInput.length(); j++) {
-            std::cout << (char)toupper(userInput[j]);
+            std::cout << static_cast<char>(toupper(userInput[j]));
         }
     }
     std::cout << std::endl;
