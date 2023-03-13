@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:21:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/13 11:34:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/13 11:43:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void Contact::printContactInfo() const {
 
 void Contact::printLine(std::string content) {
 	content.length() > 10 ? content = content.substr(0, 9).append(".") : content;
-	std::cout << std::setw(10) << std::left << std::setfill(' ') << content << "|";
+	std::cout << std::setw(10) << std::right << std::setfill(' ') << content << "|";
 }
