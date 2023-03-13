@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 13:07:05 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 13:34:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:42:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int Account::getNbWithdrawals() {
 void Account::displayAccountsInfos() {
 	_displayTimestamp();
 	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount
-		<< ";deposit" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals
+		<< ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals
 		<< std::endl;
 }
 
@@ -46,7 +46,7 @@ void Account::_displayTimestamp() {
 	time_t rawTime = time(NULL);
 	struct tm *pLocal = localtime(&rawTime);
 	std::cout << '[' << pLocal->tm_year + 1900 << pLocal->tm_mon << pLocal->tm_mday <<
-			  '_' << pLocal->tm_hour << pLocal->tm_min << pLocal->tm_sec << ']';
+			  '_' << pLocal->tm_hour << pLocal->tm_min << pLocal->tm_sec << "] ";
 }
 
 // Members
@@ -59,19 +59,18 @@ Account::Account(int initial_deposit) :
 	_nbAccounts++;
 	_totalAmount += initial_deposit;
 	_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";amount" << _amount << ";created" << std::endl;
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created" << std::endl;
 }
 
 Account::~Account() {
 	_totalAmount -= this->_amount;
 	_nbAccounts--;
 	_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";amount" << _amount << ";closed" << std::endl;
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
 }
 
 void Account::makeDeposit(int deposit) {
 	int p_amount = _amount;
-	p_amount = _amount;
 	_totalNbDeposits++;
 	_totalAmount += deposit;
 	_amount += deposit;
