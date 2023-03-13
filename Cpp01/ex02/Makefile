@@ -1,14 +1,12 @@
-NAME			:=	zombieHorde
+NAME			:=	hiThisIsBrain
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:=	Zombie.hpp \
+HEADERS_FILES	:=
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp \
-					Zombie.cpp \
-					zombieHorde.cpp
+SRC_FILES		:=	main.cpp
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
