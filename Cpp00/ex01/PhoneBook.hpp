@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:11:22 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 12:05:47 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/13 11:35:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ class PhoneBook {
 public:
 	PhoneBook();
 	~PhoneBook();
-	void		AddContact(const Contact& newContact);
-	Contact		GetContact(int contactIndex) const;
-	void 		PrintPhoneBook() const;
-	void		GetContactInfo() const;
+	void		addContact(const Contact& newContact);
+	Contact		getContact(int contactIndex) const;
+	void 		printPhoneBook() const;
+	void		getContactInfo() const;
 
 	// Static
-	static void	DisplayCommands();
+	static void	displayCommands();
 
 private:
 	Contact _contacts[PHONEBOOK_SIZE];

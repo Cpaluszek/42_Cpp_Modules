@@ -13,51 +13,51 @@
 #include <iostream>
 #include "PhoneBook.hpp"
 
-static void AddContact(PhoneBook *phoneBook);
-static int GetContactField(std::string *fieldContent, const std::string& identifier);
+static void addContact(PhoneBook *phoneBook);
+static int getContactField(std::string *fieldContent, const std::string& identifier);
 
 int	main() {
 	PhoneBook phoneBook;
 	std::string userInput;
 
 	std::cout << GREEN << "Welcome to this crappy phonebook software!" << END << std::endl;
-	PhoneBook::DisplayCommands();
+	PhoneBook::displayCommands();
 	while (true) {
 		std::cout << BLUE << "Enter a command: " << END;
 		std::getline(std::cin, userInput);
 		if (std::cin.eof())
 			return (1);
 		if (userInput == "ADD")
-			AddContact(&phoneBook);
+			addContact(&phoneBook);
 		else if (userInput == "SEARCH")
-			phoneBook.PrintPhoneBook();
+			phoneBook.printPhoneBook();
 		else if (userInput == "EXIT")
 			return 0;
 		else {
 			std::cout << RED << userInput << ": is a not a valid command" << END << std::endl;
-			PhoneBook::DisplayCommands();
+			PhoneBook::displayCommands();
 		}
 	}
 }
 
-static void AddContact(PhoneBook *phoneBook) {
+static void addContact(PhoneBook *phoneBook) {
 	std::string contactInformation[5];
 
-	if (GetContactField(&contactInformation[0], "First name"))
+	if (getContactField(&contactInformation[0], "First name"))
 		return ;
-	if (GetContactField(&contactInformation[1], "Last name"))
+	if (getContactField(&contactInformation[1], "Last name"))
 		return ;
-	if (GetContactField(&contactInformation[2], "Nickname"))
+	if (getContactField(&contactInformation[2], "Nickname"))
 		return ;
-	if (GetContactField(&contactInformation[3], "Phone number"))
+	if (getContactField(&contactInformation[3], "Phone number"))
 		return ;
-	if (GetContactField(&contactInformation[4], "Darkest secret"))
+	if (getContactField(&contactInformation[4], "Darkest secret"))
 		return ;
 	Contact newContact(contactInformation);
-	phoneBook->AddContact(newContact);
+	phoneBook->addContact(newContact);
 }
 
-static int GetContactField(std::string *fieldContent, const std::string& identifier) {
+static int getContactField(std::string *fieldContent, const std::string& identifier) {
 	std::cout << identifier << ": ";
 	std::getline(std::cin, *fieldContent);
 	if (std::cin.eof())

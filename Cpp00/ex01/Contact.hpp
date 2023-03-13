@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:11:55 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/12 11:26:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:43:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ public:
 	~Contact();
 
 	// Getters
-	std::string GetFirstName() const;
-	std::string GetLastName() const;
-	std::string GetNickname() const;
-	std::string GetPhoneNumber() const;
-	std::string GetDarkestSecret() const;
-	void PrintContactInfo() const;
+	std::string getFirstName() const;
+	std::string getLastName() const;
+	std::string getNickname() const;
+	std::string getPhoneNumber() const;
+	std::string getDarkestSecret() const;
 
-	// Static
-	static void PrintLine(std::string content);
+	void printContactInfo() const;
+
+	static void printLine(std::string content);
 
 private:
 	std::string _firstName;
