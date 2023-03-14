@@ -6,12 +6,11 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:56:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/14 17:51:11 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:57:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-
 
 Harl::Harl() {
 	this->_levels[0] = "DEBUG";
@@ -43,11 +42,16 @@ void Harl::error() {
 }
 
 void Harl::complain(std::string level) {
-	for (int i = 0; i < LEVELS_SIZE; i++) {
-		if (level == this->_levels[i]) {
-			(this->*(_functPtrs[i]))();
-			return ;
-		}
+	int i = 0;
+
+	while (i < LEVELS_SIZE && level != this->_levels[i])
+		i++;
+	if (i == LEVELS_SIZE) {
+		std::cerr << "Harl cannot complain about: " << level << std::endl;
+		return ;
 	}
-	std::cerr << "Harl cannot complain about: " << level << std::endl;
+	while (i < LEVELS_SIZE) {
+		(this->*(_functPtrs[i]))();
+		i++;
+	}
 }
