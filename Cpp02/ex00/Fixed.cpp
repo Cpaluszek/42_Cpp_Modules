@@ -6,11 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 09:33:57 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/15 10:04:11 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/15 10:07:20 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::_fractionalBits = 8;
 
 Fixed::Fixed() : _value(0) {
 	std::cout << "Default constructor called" << std::endl;

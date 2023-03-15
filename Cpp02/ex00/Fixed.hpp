@@ -6,9 +6,10 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 09:33:40 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/15 09:55:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/15 10:07:01 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #pragma once
 
 #include <iostream>
@@ -25,5 +26,5 @@ public:
 
 private:
 	int	_value;
-	static const int _fractionalBitsAmount = 8;
+	static const int _fractionalBits;
 };
