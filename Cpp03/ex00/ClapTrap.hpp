@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 11:43:15 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/17 11:34:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/17 11:38:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ public:
 private:
 	std::string		_name;
 	int				_hitPoints;
-	unsigned int	_eneryPoints;
+	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;
 };
