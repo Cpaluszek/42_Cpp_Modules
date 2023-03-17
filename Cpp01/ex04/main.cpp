@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:20:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/14 12:55:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:10:41 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ int main(int argc, char **argv) {
 		std::cerr << "Usage: ./sed <filename> <s1> <s2>" << std::endl;
 		return 1;
 	}
-	filename = argv[1];
+	if (static_cast<string>(argv[2]).size() == 0) {
+		std::cerr << "s1 cannot be empty" << std::endl;
+		return 1;
+	}
 
+	filename = argv[1];
 	std::ifstream inputFile(filename.c_str());
 	if (!inputFile.is_open()) {
 		std::perror("Input file");
