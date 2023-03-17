@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:56:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/14 17:57:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:15:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,18 @@ void Harl::error() {
 }
 
 void Harl::complain(std::string level) {
-	int i = 0;
+	int debugLevel = 0;
 
-	while (i < LEVELS_SIZE && level != this->_levels[i])
-		i++;
-	if (i == LEVELS_SIZE) {
-		std::cerr << "Harl cannot complain about: " << level << std::endl;
-		return ;
-	}
-	while (i < LEVELS_SIZE) {
-		(this->*(_functPtrs[i]))();
-		i++;
+	while (debugLevel < LEVELS_SIZE && level != this->_levels[debugLevel])
+		debugLevel++;
+	switch(debugLevel) {
+		case 0: case 1: case 2: case 3:
+			while (debugLevel < LEVELS_SIZE) {
+				(this->*(_functPtrs[debugLevel]))();
+				debugLevel++;
+			}
+			break ;
+		default:
+			std::cerr << "Harl cannot complain about: " << level << std::endl;
 	}
 }
