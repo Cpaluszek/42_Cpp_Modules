@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 09:33:13 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/17 13:29:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:28:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main() {
 
 	clap.setAttackDamage(2);
 	scav.setAttackDamage(1);
-
+	
 	std::cout << "----------------------------------------" << std::endl;
 	scav.guardGate();
 	std::cout << "----------------------------------------" << std::endl;
