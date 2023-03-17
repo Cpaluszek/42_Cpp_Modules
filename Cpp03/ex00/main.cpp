@@ -6,32 +6,35 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 09:33:13 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/15 15:20:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/17 11:42:42 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "ClapTrap.hpp"
 
-bool bsp(Point const& a, Point const& b, Point const& c, Point const& point);
 
 int main() {
-	Point a(0, 0);
-	Point b(1, 0);
-	Point c(0, 1);
+	ClapTrap clap("clap");
+	ClapTrap trap("trap");
 
-	Point point1(0.5f, 0.5f);
-	Point point2(1.0f, 0.0f);
-
-	if (bsp(a, b, c, point1))
-		std::cout << point1 << " is inside the triangle" << std::endl;
-	else
-		std::cout << point1 << " is outside of the triangle" << std::endl;
-
-	if (bsp(a, b, c, point2))
-		std::cout << point2 << " is inside the triangle" << std::endl;
-	else
-		std::cout << point2 << " is outside of the triangle" << std::endl;
+	clap.setAttackDamage(2);
+	trap.setAttackDamage(1);
+	std::cout << "----------------------------------------" << std::endl;
+	for (int i = 0; i < 2; i++) {
+		clap.attack(trap.getName());
+		trap.takeDamage(clap.getAttackDamage());
+		trap.attack(clap.getName());
+		clap.takeDamage(trap.getAttackDamage());
+	}
+	std::cout << "----------------------------------------" << std::endl;
+	clap.takeDamage(1);
+	trap.takeDamage(1);
+	std::cout << "----------------------------------------" << std::endl;
+	for (int i = 0; i < 10; i++) {
+		clap.beRepaired(2);
+		trap.beRepaired(2);
+	}
+	std::cout << "----------------------------------------" << std::endl;
 	return 0;
 }
 
