@@ -36,6 +36,15 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &rhs) {
 	return *this;
 }
 
+void ScavTrap::attack(const std::string &target) {
+	if (this->_energyPoints < 1 || _hitPoints < 1)
+		return ;
+	this->_energyPoints -= 1;
+	std::cout << "ScavTrap: " << this->_name << " attacks " << target
+			  << ", causing " << this->_hitPoints << " points of damage, "
+			  << " Remaining energy: " << this->_energyPoints << std::endl;
+}
+
 void ScavTrap::guardGate() {
 	std::cout << this->_name << " is now in Gate Keeper mode" << std::endl;
 }
