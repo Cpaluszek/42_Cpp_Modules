@@ -1,7 +1,7 @@
 NAME			:=	fragTrap
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:=	ClapTrap.hpp ScavTrap.hpp FrapTrap.hpp
+HEADERS_FILES	:=	ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
