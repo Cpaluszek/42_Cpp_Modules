@@ -134,6 +134,6 @@ Fixed Fixed::operator--(int) {
 }
 
 std::ostream &operator<<(std::ostream & out, const Fixed &fixed) {
-	std::cout << fixed.toFloat();
+	out << fixed.toFloat();
 	return out;
 }
