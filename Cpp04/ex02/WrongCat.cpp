@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 11:10:04 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/20 10:10:05 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/03/19 11:43:33 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/03/19 11:44:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
 #include "WrongCat.hpp"
 
-int main() {
-	Animal* animals[100];
-	for (int i = 0; i < 100; i++) {
-		if (i % 2) {
-			animals[i] = new Dog();
-		}
-		else {
-			animals[i] = new Cat();
-		}
-	}
-	for (int i = 0; i < 100; i++) {
-		delete animals[i];
-	}
-	return 0;
+WrongCat::WrongCat() : WrongAnimal() {
+	this->_type = "WrongCat";
+	std::cout << "WrongCat constructor" << std::endl;
+}
+
+WrongCat::~WrongCat() {
+	std::cout << "WrongCat destructor" << std::endl;
+}
+
+void WrongCat::makeSound() const {
+	std::cout << "Wrong Meow!" << std::endl;
 }
