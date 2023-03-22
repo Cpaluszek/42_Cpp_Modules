@@ -13,6 +13,7 @@
 #pragma once
 #include <exception>
 
+// Todo: create an Exception class and nest sub-classes
 class GradeTooHighException : public std::exception {
 public:
 	const char * what() const throw() {
