@@ -6,12 +6,16 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:05:57 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/22 10:32:15 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:17:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+#include "GradeExceptions.hpp"
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 public:
@@ -27,20 +31,7 @@ public:
 
 	void 		incrementGrade();
 	void 		decrementGrade();
-
-	/* Exception Classes */
-class GradeTooHighException: public std::exception {
-public:
-	const char * what() const throw() {
-		return "Grade too high";
-	}
-};
-class GradeTooLowException: public std::exception {
-	public:
-		const char * what() const throw() {
-			return "Grade too low";
-		}
-	};
+	void		signForm(Form &form);
 
 private:
 	const std::string	_name;
