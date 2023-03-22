@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,25 +12,26 @@
 
 #pragma once
 #include <iostream>
-#include "GradeExceptions.hpp"
+#include "Exceptions.hpp"
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 public:
-	Form(Form const & src);
-	~Form();
-	Form & operator=(Form const & src);
+	AForm(AForm const & src);
+	~AForm();
+	AForm & operator=(AForm const & src);
 
-	Form(std::string const & name, int const & gradeToSign, int const & gradeToExecute);
+	AForm(std::string const & name, int const & gradeToSign, int const & gradeToExecute);
 
 	std::string getName() const;
 	int 		getRequiredSignGrade() const;
 	int 		getRequiredExecGrade() const;
 	bool 		getSigned() const;
 
-	void		beSigned(const Bureaucrat& bur);
+	void			beSigned(const Bureaucrat& bur);
+	virtual void	execute(Bureaucrat const & executor) const = 0;
 
 private:
 	const std::string	_name;
@@ -38,7 +39,7 @@ private:
 	const int 			_requiredSignGrade;
 	const int 			_requiredExecGrade;
 
-	Form();
+	AForm();
 };
 
-std::ostream & operator<<(std::ostream & out, Form & src);
+std::ostream & operator<<(std::ostream & out, AForm & src);
