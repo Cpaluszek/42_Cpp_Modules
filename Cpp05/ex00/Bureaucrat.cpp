@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:07:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/22 10:27:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:05:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
 
 Bureaucrat::Bureaucrat(const std::string &name, const int &grade) :
 	_name(name), _grade(grade) {
-	if (this->_grade < MIN_GRADE) {
+	if (this->_grade > MIN_GRADE) {
 		Bureaucrat::GradeTooLowException();
 	}
 	else if (this->_grade < MAX_GRADE) {
@@ -47,15 +47,15 @@ int Bureaucrat::getGrade() const {
 }
 
 void Bureaucrat::incrementGrade() {
-	if (this->_grade + 1 > MAX_GRADE)
+	if (this->_grade - 1 < MAX_GRADE)
 		throw Bureaucrat::GradeTooHighException();
-	this->_grade++;
+	this->_grade--;
 }
 
 void Bureaucrat::decrementGrade() {
-	if (this->_grade - 1 < MIN_GRADE)
+	if (this->_grade + 1 > MIN_GRADE)
 		throw Bureaucrat::GradeTooLowException();
-	this->_grade--;
+	this->_grade++;
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &src) {

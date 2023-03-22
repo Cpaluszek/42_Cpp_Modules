@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:05:57 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/22 10:27:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/22 10:32:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
-#define MIN_GRADE 1
-#define MAX_GRADE 150
+#define MIN_GRADE 150
+#define MAX_GRADE 1
 
 class Bureaucrat {
 public:
