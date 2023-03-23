@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   GradeExceptions.hpp                          :+:      :+:    :+:   */
+/*   Exceptions.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 10:57:05 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/22 10:57:05 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/03/23 10:14:22 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/03/23 10:14:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <exception>
 
-class GradeTooHighException : public std::exception {
+class Exceptions {
 public:
-	const char * what() const throw() {
-		return "Grade too high";
-	}
+	class GradeTooHighException : public std::exception {
+	public:
+		const char * what() const throw();
+	};
+
+	class GradeTooLowException: public std::exception {
+	public:
+		const char * what() const throw();
+	};
 };
 
-class GradeTooLowException: public std::exception {
-public:
-	const char * what() const throw() {
-		return "Grade too low";
-	}
-};

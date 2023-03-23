@@ -12,7 +12,7 @@
 
 #pragma once
 #include <iostream>
-#include "GradeExceptions.hpp"
+#include "Exceptions.hpp"
 #include "Form.hpp"
 
 class Form;

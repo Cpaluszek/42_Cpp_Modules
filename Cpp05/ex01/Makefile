@@ -1,12 +1,12 @@
 NAME			:=	form
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:=  Bureaucrat.hpp GradeExceptions.hpp Form.hpp
+HEADERS_FILES	:=  Bureaucrat.hpp Exceptions.hpp Form.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp Bureaucrat.cpp Form.cpp
+SRC_FILES		:=	main.cpp Exceptions.cpp Bureaucrat.cpp Form.cpp
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
