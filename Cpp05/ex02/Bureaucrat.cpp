@@ -31,10 +31,10 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
 Bureaucrat::Bureaucrat(const std::string &name, const int &grade) :
 	_name(name), _grade(grade) {
 	if (this->_grade > 150) {
-		GradeTooLowException();
+		throw Exceptions::GradeTooLowException();
 	}
 	else if (this->_grade < 1) {
-		GradeTooHighException();
+		throw Exceptions::GradeTooHighException();
 	}
 }
 
@@ -48,13 +48,13 @@ int Bureaucrat::getGrade() const {
 
 void Bureaucrat::incrementGrade() {
 	if (this->_grade - 1 < 1)
-		throw GradeTooHighException();
+		throw Exceptions::GradeTooHighException();
 	this->_grade--;
 }
 
 void Bureaucrat::decrementGrade() {
 	if (this->_grade + 1 > 150)
-		throw GradeTooLowException();
+		throw Exceptions::GradeTooLowException();
 	this->_grade++;
 }
 
@@ -63,7 +63,7 @@ void Bureaucrat::signForm(AForm &form) {
 		form.beSigned(*this);
 		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	}
-	catch (GradeTooLowException &e) {
+	catch (Exceptions::GradeTooLowException &e) {
 		std::cout << this->getName() << " couldn't sign " << form.getName() <<
 			" because: " << e.what() << std::endl;
 	}

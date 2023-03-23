@@ -34,10 +34,10 @@ AForm & AForm::operator=(const AForm &src) {
 AForm::AForm(const std::string &name, const int &gradeToSign, const int &gradeToExecute):
 	_name(name), _signed(false), _requiredSignGrade(gradeToSign), _requiredExecGrade(gradeToExecute) {
 	if (gradeToSign < 1 || gradeToExecute < 1) {
-		throw GradeTooHighException();
+		throw Exceptions::GradeTooHighException();
 	}
 	if (gradeToSign > 150 || gradeToExecute > 150) {
-		throw GradeTooLowException();
+		throw Exceptions::GradeTooLowException();
 	}
 }
 
@@ -59,7 +59,7 @@ bool AForm::getSigned() const {
 
 void AForm::beSigned(const Bureaucrat& bur) {
 	if (bur.getGrade() > this->getRequiredSignGrade()) {
-		throw GradeTooLowException();
+		throw Exceptions::GradeTooLowException();
 	}
 	this->_signed = true;
 }

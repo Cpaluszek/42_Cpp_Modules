@@ -7,7 +7,7 @@ HEADERS_FILES	:=  Bureaucrat.hpp Exceptions.hpp AForm.hpp ShrubberyCreationForm.
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
+SRC_FILES		:=	main.cpp Exceptions.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
 					RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
