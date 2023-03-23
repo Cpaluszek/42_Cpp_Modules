@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Exceptions.hpp                                     :+:      :+:    :+:   */
+/*   Exceptions.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 10:02:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/23 10:07:43 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/03/23 10:02:27 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/03/23 10:05:10 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include <exception>
+#include "Exceptions.hpp"
 
-class Exceptions {
-public:
-	class GradeTooHighException : public std::exception{
-	public:
-		const char * what() const throw();
-	};
+const char *Exceptions::GradeTooHighException::what() const throw() {
+	return "Grade too high";
+}
 
-	class GradeTooLowException : public std::exception {
-	public:
-		const char * what() const throw();
-	};
+const char *Exceptions::GradeTooLowException::what() const throw() {
+	return "Grade too low";
+}
 
-	class NotSignedExection : public std::exception {
-	public:
-		const char * what() const throw();
-	};
-};
-
+const char *Exceptions::NotSignedExection::what() const throw() {
+	return "Form is not signed";
+}

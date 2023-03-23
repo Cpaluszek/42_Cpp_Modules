@@ -23,10 +23,10 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src) :
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
 	if (!this->getSigned()) {
-		throw NotSignedExection();
+		throw Exceptions::NotSignedExection();
 	}
 	else if (executor.getGrade() > this->getRequiredExecGrade()) {
-		throw GradeTooLowException();
+		throw Exceptions::GradeTooLowException();
 	}
 	static int i;
 	if (i % 2 == 0) {
