@@ -21,8 +21,10 @@ public:
 	Cat(const Cat & src);
 
 	Cat & operator=(const Cat & rhs);
+	Animal & operator=(const Animal & rhs);
 
 	void makeSound() const;
+	Brain *getBrain() const;
 
 private:
 	Brain* _brain;

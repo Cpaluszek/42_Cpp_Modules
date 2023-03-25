@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:42:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/20 09:46:48 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/25 10:09:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ public:
 
 	Brain & operator=(const Brain & rhs);
 
-	std::string _ideas[BRAIN_SIZE];
+	std::string ideas[BRAIN_SIZE];
 };

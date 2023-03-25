@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 10:59:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/19 11:19:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/25 10:20:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <string>
 #include <iostream>
+#include "Brain.hpp"
 
 class Animal {
 public:
@@ -28,11 +29,12 @@ public:
 	 */
 	virtual ~Animal();
 
-	Animal & operator=(Animal const & rhs);
+	virtual Animal & operator=(Animal const & rhs);
 
 	std::string getType() const;
 
 	virtual void makeSound() const = 0;
+	virtual Brain *getBrain() const = 0;
 
 protected:
 	std::string _type;

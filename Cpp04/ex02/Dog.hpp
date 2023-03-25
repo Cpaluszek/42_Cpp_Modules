@@ -20,8 +20,10 @@ public:
 	Dog(const Dog & src);
 
 	Dog & operator=(const Dog & rhs);
+	Animal & operator=(const Animal & rhs);
 
 	void makeSound() const;
+	Brain *getBrain() const;
 
 private:
 	Brain* _brain;
