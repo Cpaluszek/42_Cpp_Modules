@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:25:43 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/20 13:36:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/25 11:03:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ MateriaSource::~MateriaSource() {
 }
 
 MateriaSource::MateriaSource(const MateriaSource &src) {
-	for (int i = 0; i < 4; i++) {
-		if (src._materias[i] != NULL)
-			this->_materias[i] = src._materias[i]->clone();
-	}
+	*this = src;
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &rhs) {
 	for (int i = 0; i < 4; i++) {
+		if (this->_materias[i] != NULL)
+			delete this->_materias[i];
 		if (rhs._materias[i] != NULL)
 			this->_materias[i] = rhs._materias[i]->clone();
+		else
+			this->_materias[i] = NULL;
 	}
 	return *this;
 }
@@ -65,4 +66,5 @@ void MateriaSource::learnMateria(AMateria *m) {
 			return ;
 		}
 	}
+	std::cout << "Can't learn any more materia" << std::endl;
 }

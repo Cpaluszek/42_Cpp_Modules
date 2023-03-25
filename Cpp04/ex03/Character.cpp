@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:51:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/21 10:45:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/25 11:10:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,12 @@ std::string const &Character::getName() const {
 
 void Character::equip(AMateria *m) {
 	for (int i = 0; i < 4; i++) {
-		if (this->_inventory[i] != NULL) {
+		if (this->_inventory[i] == NULL) {
 			this->_inventory[i] = m;
 			return ;
 		}
 	}
+	delete m;
 	std::cout << "Not enough space in inventory to equip" << std::endl;
 }
 
@@ -68,10 +69,10 @@ void Character::unequip(int idx) {
 	{
 		Character::_trash.push_back(this->_inventory[idx]);
 		this->_inventory[idx] = NULL;
-		std::cout << this->_name << "unequipped [" << idx << "]" << std::endl;
+		std::cout << this->_name << " unequipped [" << idx << "]" << std::endl;
 	}
 	else {
-		std::cout << this->_name << "Cannot unequip [" << idx << "]" << std::endl;
+		std::cout << this->_name << " Cannot unequip [" << idx << "]" << std::endl;
 	}
 }
 
@@ -87,4 +88,5 @@ void Character::clearTrash() {
 	for (it = Character::_trash.begin(); it != Character::_trash.end(); it++, i++) {
 		delete Character::_trash[i];
 	}
+	Character::_trash.clear();
 }
