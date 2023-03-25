@@ -23,6 +23,5 @@ public:
 
 	Brain & operator=(const Brain & rhs);
 
-private:
 	std::string _ideas[BRAIN_SIZE];
 };
