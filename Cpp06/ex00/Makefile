@@ -1,12 +1,12 @@
-NAME			:=	scalarConverter
+NAME			:=	convert
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:=
+HEADERS_FILES	:= ScalarConverter.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=
+SRC_FILES		:= ScalarConverter.cpp main.cpp
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
