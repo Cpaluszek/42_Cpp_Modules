@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 11:16:43 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/25 10:03:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/26 13:43:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Dog::~Dog() {
 Dog::Dog(const Dog &src) : Animal() {
 	std::cout << "Dog copy constructor" << std::endl;
 	this->_type = src.getType();
+	this->_brain = new Brain();
 	*(this->_brain) = *(src.getBrain());
 }
 

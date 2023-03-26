@@ -26,6 +26,7 @@ Dog::~Dog() {
 Dog::Dog(const Dog &src) : Animal() {
 	std::cout << "Dog copy constructor" << std::endl;
 	this->_type = src.getType();
+	this->_brain = new Brain();
 	*(this->_brain) = *(src.getBrain());
 }
 

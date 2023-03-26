@@ -26,6 +26,7 @@ Cat::~Cat() {
 Cat::Cat(const Cat &src) : Animal() {
 	std::cout << "Cat copy constructor" << std::endl;
 	this->_type = src.getType();
+	this->_brain = new Brain();
 	*(this->_brain) = *(src.getBrain());
 }
 
