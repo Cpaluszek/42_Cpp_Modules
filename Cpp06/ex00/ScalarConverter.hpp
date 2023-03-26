@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:45:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/26 11:37:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/26 11:40:34 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ private:
 	static bool checkInt(std::string const & literal);
 	static bool checkFloat(std::string const & literal);
 	static bool checkDouble(std::string const & literal);
+
+	ScalarConverter();
 };
