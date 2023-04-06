@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:12:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/04/06 13:33:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/04/06 13:43:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ Span &Span::operator=(const Span &src) {
 
 void Span::addNumber(int number) {
 	if (this->_numbers.size() >= this->_n) {
-		throw Span::TooManyNumbers();
+		throw std::out_of_range("Span: addNumber: span is full");
 	}
 	this->_numbers.push_back(number);
 }
 
 int Span::shortestSpan() const {
 	if (this->_numbers.size() < 2) {
-		throw Span::NotEnoughNumbers();
+		throw std::out_of_range("Span: shortestSpan: not enough numbers");
 	}
 	std::vector<int> temp = this->_numbers;
 	std::sort(temp.begin(), temp.end());
-	unsigned int min = *temp.begin() - *temp.end();
-	for (unsigned int i = 0; i < temp.size() - 1 ; i++) {
+	unsigned int min = std::abs(temp[0] - temp[1]);
+	for (unsigned int i = 1; i < temp.size() - 1 ; i++) {
 		if (std::abs(temp[i] - temp[i + 1]) < min) {
 			min = std::abs(temp[i] - temp[i + 1]);
 		}
@@ -52,7 +52,7 @@ int Span::shortestSpan() const {
 
 int Span::longestSpan() const {
 	if (this->_numbers.size() < 2) {
-		throw Span::NotEnoughNumbers();
+		throw std::out_of_range("Span: longestSpan: not enough numbers");
 	}
 	int max = *std::max_element(this->_numbers.begin(), this->_numbers.end());
 	int min = *std::min_element(this->_numbers.begin(), this->_numbers.end());

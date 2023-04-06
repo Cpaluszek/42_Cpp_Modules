@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:12:24 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/04/06 13:22:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/04/06 13:43:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,13 @@ public:
 	int shortestSpan() const;
 	int longestSpan() const;
 
-	class TooManyNumbers : std::exception {
-	public:
-		const char * what() const throw(){
-			return "Too many numbers stored";
+	template <typename it>
+	void addNumbers(it start, it end) {
+		while (start != end) {
+			addNumber(*start);
+			start++;
 		}
-	};
-
-	class NotEnoughNumbers : std::exception {
-	public:
-		const char * what() const throw(){
-			return "Not enough numbers in collection";
-		}
-	};
+	}
 
 private:
 	unsigned int _n;
