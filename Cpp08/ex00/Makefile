@@ -1,7 +1,7 @@
-NAME			:=	whatever
+NAME			:=	easyfind
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:= whatever.hpp
+HEADERS_FILES	:= easyfind.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
