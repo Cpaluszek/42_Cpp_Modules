@@ -1,12 +1,12 @@
-NAME			:=	easyfind
+NAME			:=	PmergeMe
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:= easyfind.hpp
+HEADERS_FILES	:= PmergeMe.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:= main.cpp
+SRC_FILES		:= main.cpp PmergeMe.cpp
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
