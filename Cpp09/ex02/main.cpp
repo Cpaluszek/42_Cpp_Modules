@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 11:23:12 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/04/08 12:14:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/04/09 12:19:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 # define END	"\033[0m"
 # define RED	"\033[1;31m"
+
+double getElapsedTime(clock_t & startTime) {
+	return static_cast<double>(clock() - startTime) / static_cast<double>(CLOCKS_PER_SEC) * 1000000.0;
+}
 
 int main(int argc, char **argv) {
 	if (argc == 1) {
@@ -42,7 +46,22 @@ int main(int argc, char **argv) {
 			return 1;
 		}
 	}
+
+	clock_t startTime;
+	double elapsedTime;
+
 	std::cout << "Before: " << pmergeMe << std::endl;
-	std::cout << pmergeMe.isSorted() << std::endl;
+	startTime = clock();
+	pmergeMe.mergeInsertSort(pmergeMe.getVector());
+	elapsedTime = getElapsedTime(startTime);
 	std::cout << "After: " << pmergeMe << std::endl;
+	std::cout << "Time to process a rang of " << pmergeMe.getSize()
+		<< " elements with std::vector: " << elapsedTime << " us" << std::endl;
+
+	startTime = clock();
+	pmergeMe.mergeInsertSort(pmergeMe.getDeque());
+	elapsedTime = getElapsedTime(startTime);
+	std::cout << "Time to process a rang of " << pmergeMe.getSize()
+			  << " elements with std::deque: " << elapsedTime << " us" << std::endl;
 }
+
