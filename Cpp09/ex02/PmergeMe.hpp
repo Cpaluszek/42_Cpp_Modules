@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 11:23:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/04/09 12:15:15 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/04/10 12:09:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ public:
 private:
 	std::vector<int> _vec;
 	std::deque<int> _deque;
+	unsigned int _groupSize;
 };
 
 std::ostream & operator<<(std::ostream & out, PmergeMe & src);

@@ -6,30 +6,31 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 11:23:45 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/04/09 12:26:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/04/10 12:15:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe() :_groupSize(0){}
 
 PmergeMe::~PmergeMe() {}
 
-PmergeMe::PmergeMe(const PmergeMe &src) : _vec(src._vec), _deque(src._deque){}
+PmergeMe::PmergeMe(const PmergeMe &src) : _vec(src._vec), _deque(src._deque), _groupSize(src._groupSize){}
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &src) {
 	_vec = src._vec;
 	_deque = src._deque;
+	_groupSize = src._groupSize;
 	return *this;
 }
 
 void PmergeMe::addNumber(int n) {
-	if (std::find(this->_vec.begin(), this->_vec.end(), n) != this->_vec.end()) {
-		std::ostringstream oss;
-		oss << n;
-		throw std::invalid_argument(std::string("Error: duplicate number: ") + oss.str());
-	}
+//	if (std::find(this->_vec.begin(), this->_vec.end(), n) != this->_vec.end()) {
+//		std::ostringstream oss;
+//		oss << n;
+//		throw std::invalid_argument(std::string("Error: duplicate number: ") + oss.str());
+//	}
 	this->_vec.push_back(n);
 	this->_deque.push_back(n);
 }
@@ -64,7 +65,10 @@ void PmergeMe::mergeInsertSort(std::vector<int> &vec) {
 		return;
 	std::vector<int> leftSide(vec.size() / 2);
 	std::vector<int> rightSide(vec.size() - (vec.size() / 2));
-	if (vec.size() <= GROUP_SIZE) {
+	if (this->_groupSize == 0) {
+		this->_groupSize = vec.size() / 100 + 2;
+	}
+	if (vec.size() <= this->_groupSize) {
 		insertionSort(vec);
 		return ;
 	}
