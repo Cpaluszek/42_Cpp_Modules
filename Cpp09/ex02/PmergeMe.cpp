@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 11:23:45 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/04/10 12:15:47 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/04/10 12:16:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src) {
 }
 
 void PmergeMe::addNumber(int n) {
-//	if (std::find(this->_vec.begin(), this->_vec.end(), n) != this->_vec.end()) {
-//		std::ostringstream oss;
-//		oss << n;
-//		throw std::invalid_argument(std::string("Error: duplicate number: ") + oss.str());
-//	}
+	if (std::find(this->_vec.begin(), this->_vec.end(), n) != this->_vec.end()) {
+		std::ostringstream oss;
+		oss << n;
+		throw std::invalid_argument(std::string("Error: duplicate number: ") + oss.str());
+	}
 	this->_vec.push_back(n);
 	this->_deque.push_back(n);
 }
